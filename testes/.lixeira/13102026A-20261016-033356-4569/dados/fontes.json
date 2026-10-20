@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "fontes": [
+    {
+      "id": "sd-001",
+      "arquivo": "sd-001.csv",
+      "origem": "teste_csv.csv",
+      "importado_em": "2026-10-14T00:45:55",
+      "separador": ";",
+      "codificacao": "utf-8-sig",
+      "linhas": 3,
+      "colunas": [
+        {
+          "original": "alt",
+          "exibicao": "altura"
+        },
+        {
+          "original": "v",
+          "exibicao": "velocidade"
+        },
+        {
+          "original": "temp",
+          "exibicao": "temperatura"
+        }
+      ],
+      "taxa_hz": 10.0
+    },
+    {
+      "id": "sd-002",
+      "arquivo": "sd-002.csv",
+      "origem": "teste_csv.csv",
+      "importado_em": "2026-10-14T00:46:22",
+      "separador": ";",
+      "codificacao": "utf-8-sig",
+      "linhas": 3,
+      "colunas": [
+        {
+          "original": "alt",
+          "exibicao": "alt"
+        },
+        {
+          "original": "v",
+          "exibicao": "v"
+        },
+        {
+          "original": "temp",
+          "exibicao": "temp"
+        }
+      ],
+      "taxa_hz": null
+    },
+    {
+      "id": "sd-003",
+      "arquivo": "sd-003.csv",
+      "origem": "teste_csv.csv",
+      "importado_em": "2026-10-14T00:49:31",
+      "separador": ";",
+      "codificacao": "utf-8-sig",
+      "linhas": 201,
+      "colunas": [
+        {
+          "original": "alt",
+          "exibicao": "alt"
+        },
+        {
+          "original": "v",
+          "exibicao": "v"
+        },
+        {
+          "original": "temp",
+          "exibicao": "temp"
+        }
+      ],
+      "taxa_hz": null
+    }
+  ]
+}

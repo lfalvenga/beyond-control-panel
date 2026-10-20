@@ -1,0 +1,66 @@
+{
+  "schema_version": 3,
+  "id": "42a04c99-b737-4485-bfe9-7fb067a95aeb",
+  "identificacao": {
+    "codigo": "13102026b",
+    "tipo": "voo",
+    "usa_acionamento": false,
+    "projeto": "NZK",
+    "data": "13/10/2026",
+    "local": "Itajubá",
+    "equipe": "Beyond",
+    "criado_por": "Luiz",
+    "classificacao": "H1000",
+    "observacoes": ""
+  },
+  "ficha": [
+    {
+      "nome": "Pressão Atmosférica",
+      "unidade": "Pa",
+      "valor": null,
+      "responsavel": "",
+      "horario": "",
+      "parecer": "Pendente"
+    },
+    {
+      "nome": "Latitude",
+      "unidade": "°",
+      "valor": null,
+      "responsavel": "",
+      "horario": "",
+      "parecer": "Pendente"
+    },
+    {
+      "nome": "Longitude",
+      "unidade": "°",
+      "valor": null,
+      "responsavel": "",
+      "horario": "",
+      "parecer": "Pendente"
+    },
+    {
+      "nome": "Altitude",
+      "unidade": "m",
+      "valor": null,
+      "responsavel": "",
+      "horario": "",
+      "parecer": "Pendente"
+    },
+    {
+      "nome": "Inclinação",
+      "unidade": "°",
+      "valor": null,
+      "responsavel": "",
+      "horario": "",
+      "parecer": "Pendente"
+    },
+    {
+      "nome": "Azimute",
+      "unidade": "°",
+      "valor": null,
+      "responsavel": "",
+      "horario": "",
+      "parecer": "Pendente"
+    }
+  ]
+}
