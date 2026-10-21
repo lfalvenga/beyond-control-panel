@@ -1,0 +1,66 @@
+{
+  "schema_version": 3,
+  "id": "6a068ddd-87c1-4a35-9f14-389e3ddb22db",
+  "identificacao": {
+    "codigo": "13102026A",
+    "tipo": "teste_estatico",
+    "usa_acionamento": true,
+    "projeto": "Polaris",
+    "data": "13/10/2026",
+    "local": "Itajubá",
+    "equipe": "Beyond",
+    "criado_por": "Luiz",
+    "classificacao": "H1000",
+    "observacoes": "N/A"
+  },
+  "ficha": [
+    {
+      "nome": "Pressão Atmosférica",
+      "unidade": "Pa",
+      "valor": 13000.0,
+      "responsavel": "Luiz",
+      "horario": "21:19",
+      "parecer": "Deferido"
+    },
+    {
+      "nome": "Latitude",
+      "unidade": "°",
+      "valor": 26.46,
+      "responsavel": "Luiz",
+      "horario": "21:19",
+      "parecer": "Deferido"
+    },
+    {
+      "nome": "Longitude",
+      "unidade": "°",
+      "valor": 26.43,
+      "responsavel": "Luiz",
+      "horario": "21:19",
+      "parecer": "Deferido"
+    },
+    {
+      "nome": "Altitude",
+      "unidade": "m",
+      "valor": 800.0,
+      "responsavel": "Luiz",
+      "horario": "21:19",
+      "parecer": "Deferido"
+    },
+    {
+      "nome": "Inclinação",
+      "unidade": "°",
+      "valor": 30.0,
+      "responsavel": "Luiz",
+      "horario": "21:20",
+      "parecer": "Deferido"
+    },
+    {
+      "nome": "Azimute",
+      "unidade": "°",
+      "valor": 45.0,
+      "responsavel": "Luiz",
+      "horario": "21:10",
+      "parecer": "Deferido"
+    }
+  ]
+}

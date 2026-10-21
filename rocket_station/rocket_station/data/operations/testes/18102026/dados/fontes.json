@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "fontes": [
+    {
+      "id": "radio-001",
+      "arquivo": "radio-001.csv",
+      "origem": "Telemetria (rádio)",
+      "importado_em": "2026-10-18T06:34:36",
+      "separador": ",",
+      "codificacao": "utf-8",
+      "linhas": 7443,
+      "colunas": [
+        {
+          "original": "t_s",
+          "exibicao": "Tempo (s)"
+        },
+        {
+          "original": "temperature",
+          "exibicao": "temperature"
+        },
+        {
+          "original": "pressure",
+          "exibicao": "pressure"
+        }
+      ],
+      "taxa_hz": 0.33178489977461184,
+      "tipo": "radio"
+    },
+    {
+      "id": "radio-002",
+      "arquivo": "radio-002.csv",
+      "origem": "Telemetria (rádio)",
+      "importado_em": "2026-10-18T06:35:56",
+      "separador": ",",
+      "codificacao": "utf-8",
+      "linhas": 14,
+      "colunas": [
+        {
+          "original": "t_s",
+          "exibicao": "Tempo (s)"
+        },
+        {
+          "original": "temperature",
+          "exibicao": "temperature"
+        },
+        {
+          "original": "pressure",
+          "exibicao": "pressure"
+        }
+      ],
+      "taxa_hz": 0.36789676250848996,
+      "tipo": "radio"
+    },
+    {
+      "id": "radio-003",
+      "arquivo": "radio-003.csv",
+      "origem": "Telemetria (rádio)",
+      "importado_em": "2026-10-18T06:40:59",
+      "separador": ",",
+      "codificacao": "utf-8",
+      "linhas": 163,
+      "colunas": [
+        {
+          "original": "t_s",
+          "exibicao": "Tempo (s)"
+        },
+        {
+          "original": "v",
+          "exibicao": "v"
+        },
+        {
+          "original": "tipo",
+          "exibicao": "tipo"
+        },
+        {
+          "original": "link",
+          "exibicao": "link"
+        },
+        {
+          "original": "dados",
+          "exibicao": "dados"
+        },
+        {
+          "original": "ok",
+          "exibicao": "ok"
+        }
+      ],
+      "taxa_hz": 8.490566037735848,
+      "tipo": "radio"
+    },
+    {
+      "id": "radio-004",
+      "arquivo": "radio-004.csv",
+      "origem": "Telemetria (rádio)",
+      "importado_em": "2026-10-18T06:41:08",
+      "separador": ",",
+      "codificacao": "utf-8",
+      "linhas": 31,
+      "colunas": [
+        {
+          "original": "t_s",
+          "exibicao": "Tempo (s)"
+        },
+        {
+          "original": "v",
+          "exibicao": "v"
+        },
+        {
+          "original": "tipo",
+          "exibicao": "tipo"
+        },
+        {
+          "original": "link",
+          "exibicao": "link"
+        },
+        {
+          "original": "dados",
+          "exibicao": "dados"
+        },
+        {
+          "original": "ok",
+          "exibicao": "ok"
+        }
+      ],
+      "taxa_hz": 9.348706762231224,
+      "tipo": "radio"
+    }
+  ]
+}

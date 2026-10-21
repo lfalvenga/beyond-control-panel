@@ -1,0 +1,163 @@
+{"t_s": 0.148, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -84.0, "seq": 86}, "dados": {"empuxo": 73.5, "pressao": 25.32, "temperatura": 24.4}}}
+{"t_s": 0.148, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -84.0, "seq": 87}, "dados": {"empuxo": 49.1, "pressao": 25.36, "temperatura": 24.4}}}
+{"t_s": 0.349, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -84.0, "seq": 88}, "dados": {"empuxo": 35.8, "pressao": 24.92, "temperatura": 24.4}}}
+{"t_s": 0.349, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -85.0, "seq": 89}, "dados": {"empuxo": 26.4, "pressao": 25.15, "temperatura": 24.4}}}
+{"t_s": 0.549, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -83.0, "seq": 90}, "dados": {"empuxo": 14.9, "pressao": 25.28, "temperatura": 24.4}}}
+{"t_s": 0.549, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -84.0, "seq": 91}, "dados": {"empuxo": 15.0, "pressao": 25.09, "temperatura": 24.5}}}
+{"t_s": 0.75, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -85.0, "seq": 92}, "dados": {"empuxo": 3.4, "pressao": 24.54, "temperatura": 24.5}}}
+{"t_s": 0.75, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -83.0, "seq": 93}, "dados": {"empuxo": 1.6, "pressao": 25.27, "temperatura": 24.5}}}
+{"t_s": 0.952, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -84.0, "seq": 94}, "dados": {"empuxo": 5.8, "pressao": 25.05, "temperatura": 24.5}}}
+{"t_s": 0.952, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -84.0, "seq": 95}, "dados": {"empuxo": 0.0, "pressao": 25.12, "temperatura": 24.5}}}
+{"t_s": 1.153, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -82.0, "seq": 96}, "dados": {"empuxo": 0.0, "pressao": 25.07, "temperatura": 24.5}}}
+{"t_s": 1.153, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -83.0, "seq": 97}, "dados": {"empuxo": 0.0, "pressao": 25.13, "temperatura": 24.5}}}
+{"t_s": 1.353, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -83.0, "seq": 98}, "dados": {"empuxo": 9.8, "pressao": 25.18, "temperatura": 24.5}}}
+{"t_s": 1.353, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -83.0, "seq": 99}, "dados": {"empuxo": 21.0, "pressao": 25.21, "temperatura": 24.5}}}
+{"t_s": 1.553, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -83.0, "seq": 100}, "dados": {"empuxo": 20.2, "pressao": 25.33, "temperatura": 24.5}}}
+{"t_s": 1.553, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -82.0, "seq": 101}, "dados": {"empuxo": 33.9, "pressao": 25.29, "temperatura": 24.5}}}
+{"t_s": 1.956, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -84.0, "seq": 104}, "dados": {"empuxo": 80.0, "pressao": 25.51, "temperatura": 24.5}}}
+{"t_s": 1.956, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -83.0, "seq": 105}, "dados": {"empuxo": 91.3, "pressao": 25.92, "temperatura": 24.5}}}
+{"t_s": 2.157, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -82.0, "seq": 106}, "dados": {"empuxo": 109.9, "pressao": 26.07, "temperatura": 24.5}}}
+{"t_s": 2.157, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -83.0, "seq": 107}, "dados": {"empuxo": 129.4, "pressao": 26.18, "temperatura": 24.5}}}
+{"t_s": 2.358, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -83.0, "seq": 108}, "dados": {"empuxo": 149.7, "pressao": 25.89, "temperatura": 24.5}}}
+{"t_s": 2.358, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 109}, "dados": {"empuxo": 172.4, "pressao": 26.49, "temperatura": 24.5}}}
+{"t_s": 2.558, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -82.0, "seq": 110}, "dados": {"empuxo": 191.3, "pressao": 26.45, "temperatura": 24.5}}}
+{"t_s": 2.558, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -83.0, "seq": 111}, "dados": {"empuxo": 203.8, "pressao": 26.43, "temperatura": 24.6}}}
+{"t_s": 2.759, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -82.0, "seq": 112}, "dados": {"empuxo": 240.2, "pressao": 26.4, "temperatura": 24.6}}}
+{"t_s": 2.96, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 115}, "dados": {"empuxo": 309.9, "pressao": 27.55, "temperatura": 24.6}}}
+{"t_s": 3.162, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -82.0, "seq": 116}, "dados": {"empuxo": 339.3, "pressao": 27.39, "temperatura": 24.6}}}
+{"t_s": 3.162, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -83.0, "seq": 117}, "dados": {"empuxo": 364.0, "pressao": 27.6, "temperatura": 24.6}}}
+{"t_s": 3.364, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -82.0, "seq": 119}, "dados": {"empuxo": 414.9, "pressao": 28.41, "temperatura": 24.6}}}
+{"t_s": 3.766, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -83.0, "seq": 122}, "dados": {"empuxo": 493.1, "pressao": 29.05, "temperatura": 24.6}}}
+{"t_s": 3.766, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -82.0, "seq": 123}, "dados": {"empuxo": 523.7, "pressao": 28.9, "temperatura": 24.6}}}
+{"t_s": 3.967, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 124}, "dados": {"empuxo": 550.5, "pressao": 29.28, "temperatura": 24.6}}}
+{"t_s": 3.967, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -82.0, "seq": 125}, "dados": {"empuxo": 566.4, "pressao": 29.78, "temperatura": 24.6}}}
+{"t_s": 4.168, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -82.0, "seq": 126}, "dados": {"empuxo": 596.9, "pressao": 29.7, "temperatura": 24.6}}}
+{"t_s": 4.368, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 128}, "dados": {"empuxo": 643.7, "pressao": 30.43, "temperatura": 24.6}}}
+{"t_s": 4.569, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -82.0, "seq": 130}, "dados": {"empuxo": 684.0, "pressao": 31.05, "temperatura": 24.6}}}
+{"t_s": 4.569, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 131}, "dados": {"empuxo": 702.3, "pressao": 31.24, "temperatura": 24.7}}}
+{"t_s": 4.771, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 132}, "dados": {"empuxo": 714.8, "pressao": 30.76, "temperatura": 24.7}}}
+{"t_s": 4.973, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -83.0, "seq": 135}, "dados": {"empuxo": 757.8, "pressao": 31.99, "temperatura": 24.7}}}
+{"t_s": 5.174, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -82.0, "seq": 136}, "dados": {"empuxo": 763.7, "pressao": 32.31, "temperatura": 24.7}}}
+{"t_s": 5.375, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -83.0, "seq": 138}, "dados": {"empuxo": 791.3, "pressao": 32.81, "temperatura": 24.7}}}
+{"t_s": 5.575, "msg": {"v": 1, "tipo": "status", "ok": true}}
+{"t_s": 5.575, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 140}, "dados": {"empuxo": 798.5, "pressao": 33.21, "temperatura": 24.7}}}
+{"t_s": 5.575, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 141}, "dados": {"empuxo": 799.1, "pressao": 33.63, "temperatura": 24.7}}}
+{"t_s": 5.776, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 142}, "dados": {"empuxo": 793.1, "pressao": 33.49, "temperatura": 24.7}}}
+{"t_s": 5.776, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 143}, "dados": {"empuxo": 797.9, "pressao": 33.75, "temperatura": 24.7}}}
+{"t_s": 5.976, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 144}, "dados": {"empuxo": 801.7, "pressao": 33.8, "temperatura": 24.7}}}
+{"t_s": 5.976, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 145}, "dados": {"empuxo": 787.2, "pressao": 34.2, "temperatura": 24.7}}}
+{"t_s": 6.177, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 146}, "dados": {"empuxo": 795.6, "pressao": 33.95, "temperatura": 24.7}}}
+{"t_s": 6.177, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 147}, "dados": {"empuxo": 781.8, "pressao": 34.43, "temperatura": 24.7}}}
+{"t_s": 6.377, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 148}, "dados": {"empuxo": 772.9, "pressao": 34.39, "temperatura": 24.7}}}
+{"t_s": 6.378, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -82.0, "seq": 149}, "dados": {"empuxo": 753.5, "pressao": 34.74, "temperatura": 24.7}}}
+{"t_s": 6.578, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 150}, "dados": {"empuxo": 743.5, "pressao": 34.87, "temperatura": 24.7}}}
+{"t_s": 6.578, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 151}, "dados": {"empuxo": 723.7, "pressao": 34.86, "temperatura": 24.8}}}
+{"t_s": 6.778, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -82.0, "seq": 153}, "dados": {"empuxo": 695.0, "pressao": 34.83, "temperatura": 24.8}}}
+{"t_s": 6.978, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 154}, "dados": {"empuxo": 673.2, "pressao": 35.16, "temperatura": 24.8}}}
+{"t_s": 7.179, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 156}, "dados": {"empuxo": 636.3, "pressao": 34.97, "temperatura": 24.8}}}
+{"t_s": 7.18, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 157}, "dados": {"empuxo": 601.3, "pressao": 34.69, "temperatura": 24.8}}}
+{"t_s": 7.38, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 158}, "dados": {"empuxo": 591.7, "pressao": 34.81, "temperatura": 24.8}}}
+{"t_s": 7.38, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 159}, "dados": {"empuxo": 567.7, "pressao": 34.74, "temperatura": 24.8}}}
+{"t_s": 7.581, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 160}, "dados": {"empuxo": 537.2, "pressao": 34.69, "temperatura": 24.8}}}
+{"t_s": 7.581, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 161}, "dados": {"empuxo": 512.0, "pressao": 34.54, "temperatura": 24.8}}}
+{"t_s": 7.782, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 162}, "dados": {"empuxo": 490.0, "pressao": 34.92, "temperatura": 24.8}}}
+{"t_s": 7.782, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 163}, "dados": {"empuxo": 459.7, "pressao": 34.81, "temperatura": 24.8}}}
+{"t_s": 7.984, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 164}, "dados": {"empuxo": 433.0, "pressao": 34.9, "temperatura": 24.8}}}
+{"t_s": 7.984, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 165}, "dados": {"empuxo": 413.4, "pressao": 34.65, "temperatura": 24.8}}}
+{"t_s": 8.185, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 167}, "dados": {"empuxo": 350.0, "pressao": 34.45, "temperatura": 24.8}}}
+{"t_s": 8.385, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 168}, "dados": {"empuxo": 328.0, "pressao": 33.94, "temperatura": 24.8}}}
+{"t_s": 8.586, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 170}, "dados": {"empuxo": 271.1, "pressao": 33.96, "temperatura": 24.8}}}
+{"t_s": 8.787, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 172}, "dados": {"empuxo": 223.7, "pressao": 33.63, "temperatura": 24.9}}}
+{"t_s": 8.787, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 173}, "dados": {"empuxo": 203.5, "pressao": 33.65, "temperatura": 24.9}}}
+{"t_s": 8.988, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 174}, "dados": {"empuxo": 178.6, "pressao": 33.27, "temperatura": 24.9}}}
+{"t_s": 8.988, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 175}, "dados": {"empuxo": 161.7, "pressao": 33.32, "temperatura": 24.9}}}
+{"t_s": 9.189, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 176}, "dados": {"empuxo": 133.8, "pressao": 33.35, "temperatura": 24.9}}}
+{"t_s": 9.389, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 178}, "dados": {"empuxo": 100.7, "pressao": 32.07, "temperatura": 24.9}}}
+{"t_s": 9.389, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 179}, "dados": {"empuxo": 86.4, "pressao": 32.53, "temperatura": 24.9}}}
+{"t_s": 9.59, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 180}, "dados": {"empuxo": 65.5, "pressao": 32.39, "temperatura": 24.9}}}
+{"t_s": 9.59, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 181}, "dados": {"empuxo": 50.7, "pressao": 31.53, "temperatura": 24.9}}}
+{"t_s": 9.791, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 183}, "dados": {"empuxo": 30.2, "pressao": 31.39, "temperatura": 24.9}}}
+{"t_s": 9.992, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 184}, "dados": {"empuxo": 21.2, "pressao": 31.13, "temperatura": 24.9}}}
+{"t_s": 9.992, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 185}, "dados": {"empuxo": 14.6, "pressao": 31.05, "temperatura": 24.9}}}
+{"t_s": 10.192, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 186}, "dados": {"empuxo": 7.1, "pressao": 30.96, "temperatura": 24.9}}}
+{"t_s": 10.192, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 187}, "dados": {"empuxo": 6.5, "pressao": 30.54, "temperatura": 24.9}}}
+{"t_s": 10.392, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 188}, "dados": {"empuxo": 0.0, "pressao": 30.36, "temperatura": 24.9}}}
+{"t_s": 10.392, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 189}, "dados": {"empuxo": 0.0, "pressao": 29.89, "temperatura": 24.9}}}
+{"t_s": 10.593, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 190}, "dados": {"empuxo": 10.0, "pressao": 29.64, "temperatura": 24.9}}}
+{"t_s": 10.794, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 192}, "dados": {"empuxo": 12.0, "pressao": 29.04, "temperatura": 25.0}}}
+{"t_s": 10.794, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 193}, "dados": {"empuxo": 6.6, "pressao": 28.89, "temperatura": 25.0}}}
+{"t_s": 10.995, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -81.0, "seq": 194}, "dados": {"empuxo": 25.1, "pressao": 28.92, "temperatura": 25.0}}}
+{"t_s": 10.995, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 195}, "dados": {"empuxo": 29.1, "pressao": 28.59, "temperatura": 25.0}}}
+{"t_s": 11.195, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 196}, "dados": {"empuxo": 44.0, "pressao": 28.23, "temperatura": 25.0}}}
+{"t_s": 11.195, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 197}, "dados": {"empuxo": 48.6, "pressao": 28.01, "temperatura": 25.0}}}
+{"t_s": 11.395, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 198}, "dados": {"empuxo": 75.2, "pressao": 27.71, "temperatura": 25.0}}}
+{"t_s": 11.395, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 199}, "dados": {"empuxo": 95.5, "pressao": 27.63, "temperatura": 25.0}}}
+{"t_s": 11.596, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 200}, "dados": {"empuxo": 102.9, "pressao": 27.43, "temperatura": 25.0}}}
+{"t_s": 11.597, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 201}, "dados": {"empuxo": 121.3, "temperatura": 25.0}}}
+{"t_s": 11.796, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 202}, "dados": {"empuxo": 141.4, "temperatura": 25.0}}}
+{"t_s": 11.797, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 203}, "dados": {"empuxo": 169.9, "temperatura": 25.0}}}
+{"t_s": 11.997, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 204}, "dados": {"empuxo": 196.3, "temperatura": 25.0}}}
+{"t_s": 12.199, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -75.0, "seq": 207}, "dados": {"empuxo": 262.2, "temperatura": 25.0}}}
+{"t_s": 12.4, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 208}, "dados": {"empuxo": 285.1, "temperatura": 25.0}}}
+{"t_s": 12.4, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 209}, "dados": {"empuxo": 317.7, "temperatura": 25.0}}}
+{"t_s": 12.601, "msg": {"v": 1, "tipo": "status", "ok": true}}
+{"t_s": 12.601, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 210}, "dados": {"empuxo": 345.6, "temperatura": 25.0}}}
+{"t_s": 12.602, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 211}, "dados": {"empuxo": 359.0, "temperatura": 25.1}}}
+{"t_s": 12.801, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 212}, "dados": {"empuxo": 386.7, "temperatura": 25.1}}}
+{"t_s": 12.802, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 213}, "dados": {"empuxo": 421.8, "temperatura": 25.1}}}
+{"t_s": 13.002, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 214}, "dados": {"empuxo": 444.7, "temperatura": 25.1}}}
+{"t_s": 13.002, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -76.0, "seq": 215}, "dados": {"empuxo": 471.2, "temperatura": 25.1}}}
+{"t_s": 13.203, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 216}, "dados": {"empuxo": 499.4, "temperatura": 25.1}}}
+{"t_s": 13.203, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 217}, "dados": {"empuxo": 521.5, "temperatura": 25.1}}}
+{"t_s": 13.403, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 218}, "dados": {"empuxo": 550.2, "temperatura": 25.1}}}
+{"t_s": 13.404, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 219}, "dados": {"empuxo": 570.3, "temperatura": 25.1}}}
+{"t_s": 13.604, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 220}, "dados": {"empuxo": 596.1, "temperatura": 25.1}}}
+{"t_s": 13.604, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 221}, "dados": {"empuxo": 620.4, "temperatura": 25.1}}}
+{"t_s": 13.805, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 222}, "dados": {"empuxo": 639.4, "temperatura": 25.1}}}
+{"t_s": 13.805, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 223}, "dados": {"empuxo": 662.7, "temperatura": 25.1}}}
+{"t_s": 14.006, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -76.0, "seq": 224}, "dados": {"empuxo": 685.4, "temperatura": 25.1}}}
+{"t_s": 14.207, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 227}, "dados": {"empuxo": 728.2, "temperatura": 25.1}}}
+{"t_s": 14.408, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 228}, "dados": {"empuxo": 747.1, "temperatura": 25.1}}}
+{"t_s": 14.408, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 229}, "dados": {"empuxo": 755.0, "temperatura": 25.1}}}
+{"t_s": 14.609, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 230}, "dados": {"empuxo": 766.0, "temperatura": 25.1}}}
+{"t_s": 14.609, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -76.0, "seq": 231}, "dados": {"empuxo": 782.5, "temperatura": 25.2}}}
+{"t_s": 14.809, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 232}, "dados": {"empuxo": 796.3, "temperatura": 25.2}}}
+{"t_s": 15.009, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 234}, "dados": {"empuxo": 796.5, "temperatura": 25.2}}}
+{"t_s": 15.009, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 235}, "dados": {"empuxo": 803.5, "temperatura": 25.2}}}
+{"t_s": 15.21, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 236}, "dados": {"empuxo": 793.6, "temperatura": 25.2}}}
+{"t_s": 15.21, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 237}, "dados": {"empuxo": 798.0, "temperatura": 25.2}}}
+{"t_s": 15.411, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 238}, "dados": {"empuxo": 798.5, "temperatura": 25.2}}}
+{"t_s": 15.612, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 240}, "dados": {"empuxo": 788.8, "temperatura": 25.2}}}
+{"t_s": 15.612, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 241}, "dados": {"empuxo": 776.2, "temperatura": 25.2}}}
+{"t_s": 15.812, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 242}, "dados": {"empuxo": 775.1, "temperatura": 25.2}}}
+{"t_s": 15.812, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 243}, "dados": {"empuxo": 748.8, "temperatura": 25.2}}}
+{"t_s": 16.013, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 244}, "dados": {"empuxo": 744.5, "temperatura": 25.2}}}
+{"t_s": 16.013, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 245}, "dados": {"empuxo": 723.8, "temperatura": 25.2}}}
+{"t_s": 16.214, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 246}, "dados": {"empuxo": 712.6, "temperatura": 25.2}}}
+{"t_s": 16.214, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 247}, "dados": {"empuxo": 687.1, "temperatura": 25.2}}}
+{"t_s": 16.415, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 249}, "dados": {"empuxo": 654.4, "temperatura": 25.2}}}
+{"t_s": 16.617, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 251}, "dados": {"empuxo": 603.3, "pressao": 29.96, "temperatura": 25.3}}}
+{"t_s": 16.818, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 252}, "dados": {"empuxo": 586.8, "pressao": 30.34, "temperatura": 25.3}}}
+{"t_s": 16.818, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 253}, "dados": {"empuxo": 558.6, "pressao": 30.36, "temperatura": 25.3}}}
+{"t_s": 17.018, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 254}, "dados": {"empuxo": 537.0, "pressao": 30.81, "temperatura": 25.3}}}
+{"t_s": 17.018, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 255}, "dados": {"empuxo": 521.6, "pressao": 30.89, "temperatura": 25.3}}}
+{"t_s": 17.22, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 256}, "dados": {"empuxo": 489.0, "pressao": 31.09, "temperatura": 25.3}}}
+{"t_s": 17.22, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 257}, "dados": {"empuxo": 456.2, "pressao": 31.49, "temperatura": 25.3}}}
+{"t_s": 17.42, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 258}, "dados": {"empuxo": 431.9, "pressao": 31.33, "temperatura": 25.3}}}
+{"t_s": 17.42, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 259}, "dados": {"empuxo": 408.8, "pressao": 31.88, "temperatura": 25.3}}}
+{"t_s": 17.621, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 260}, "dados": {"empuxo": 376.9, "pressao": 32.0, "temperatura": 25.3}}}
+{"t_s": 17.621, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 261}, "dados": {"empuxo": 349.0, "pressao": 31.81, "temperatura": 25.3}}}
+{"t_s": 17.821, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 262}, "dados": {"empuxo": 323.2, "pressao": 32.84, "temperatura": 25.3}}}
+{"t_s": 17.821, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 263}, "dados": {"empuxo": 300.2, "pressao": 32.65, "temperatura": 25.3}}}
+{"t_s": 18.023, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 264}, "dados": {"empuxo": 272.1, "pressao": 32.79, "temperatura": 25.3}}}
+{"t_s": 18.023, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 265}, "dados": {"empuxo": 252.2, "pressao": 33.26, "temperatura": 25.3}}}
+{"t_s": 18.223, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -77.0, "seq": 266}, "dados": {"empuxo": 222.0, "pressao": 33.32, "temperatura": 25.3}}}
+{"t_s": 18.424, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 268}, "dados": {"empuxo": 188.6, "pressao": 33.55, "temperatura": 25.3}}}
+{"t_s": 18.424, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 269}, "dados": {"empuxo": 153.5, "pressao": 34.14, "temperatura": 25.3}}}
+{"t_s": 18.625, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 270}, "dados": {"empuxo": 128.9, "pressao": 33.81, "temperatura": 25.4}}}
+{"t_s": 18.625, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 271}, "dados": {"empuxo": 116.1, "pressao": 34.12, "temperatura": 25.4}}}
+{"t_s": 18.825, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 272}, "dados": {"empuxo": 101.3, "pressao": 34.55, "temperatura": 25.4}}}
+{"t_s": 19.027, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -79.0, "seq": 274}, "dados": {"empuxo": 69.9, "pressao": 34.68, "temperatura": 25.4}}}
+{"t_s": 19.027, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 275}, "dados": {"empuxo": 53.0, "pressao": 34.42, "temperatura": 25.4}}}
+{"t_s": 19.228, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -78.0, "seq": 276}, "dados": {"empuxo": 37.1, "pressao": 35.16, "temperatura": 25.4}}}
+{"t_s": 19.228, "msg": {"v": 1, "tipo": "dados", "link": {"rssi": -80.0, "seq": 277}, "dados": {"empuxo": 30.3, "pressao": 34.81, "temperatura": 25.4}}}
