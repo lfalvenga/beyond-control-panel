@@ -79,3 +79,6 @@ class FileSourceRepository:
 
     def csv_path(self, code: str, source: DataSource) -> Path:
         return self._dir(code) / source.file
+
+    def register(self, code: str, source: DataSource) -> None:
+        self.save_all(code, self.list_all(code) + [source])

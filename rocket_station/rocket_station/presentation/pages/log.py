@@ -4,10 +4,11 @@ from pathlib import Path
 import webview
 from nicegui import app, ui
 
-from estado import estado  # estado compartilhado antigo, até as outras telas migrarem
+from rocket_station.presentation.state.session import SessionState
 from rocket_station.application.source_service import SourceService
 from rocket_station.domain.data_source import CsvPreview, DataSource
-from telas.comum import tela_com_teste  # cabeçalho e bloqueio sem operação ativa (antigo)
+from rocket_station.application.operation_service import OperationService
+from rocket_station.presentation.components.operation_page import operation_page
 
 SEPARATOR_NAMES = {',': 'vírgula', ';': 'ponto e vírgula', '\t': 'tabulação'}
 RATE_HELP = (
@@ -38,7 +39,7 @@ def _table(labels: list[str], rows: list[list[str]], per_page: int) -> None:
     ).props('dense')
 
 
-def _source_card(code: str, source: DataSource, service: SourceService, refresh) -> None:
+def _source_card(code: str, source: DataSource, service: SourceService, refresh, session) -> None:
     names = {c.original: c.display for c in source.columns}
     rate = {'value': source.sample_rate_hz}
 
@@ -50,7 +51,7 @@ def _source_card(code: str, source: DataSource, service: SourceService, refresh)
             return
         ui.notify('Alterações salvas.', type='positive')
         refresh()
-        estado.dados_mudaram()
+        session.data_changed()
 
     title = (
         f'{source.id} · {source.origin} · {source.rows} linhas · '
@@ -96,7 +97,7 @@ def _source_card(code: str, source: DataSource, service: SourceService, refresh)
             ui.button('Ver dados', icon='table_rows', on_click=show_data).props('flat')
 
 
-def _content(code: str, service: SourceService) -> None:
+def _content(code: str, service: SourceService, session) -> None:
     dialog = ui.dialog()
     with dialog:
         card = ui.card().style('width: 900px; max-width: 90vw')
@@ -112,7 +113,7 @@ def _content(code: str, service: SourceService) -> None:
             ui.label('Nenhum CSV importado nesta operação ainda.').classes('text-gray-400')
             return
         for source in sources:
-            _source_card(code, source, service, sources_list.refresh)
+            _source_card(code, source, service, sources_list.refresh, session)
 
     def show_preview(file: Path, preview: CsvPreview) -> None:
         names = {column: column for column in preview.columns}
@@ -127,7 +128,7 @@ def _content(code: str, service: SourceService) -> None:
             dialog.close()
             sources_list.refresh()
             ui.notify(f'{source.origin} importado como {source.id}.', type='positive')
-            estado.dados_mudaram()
+            session.data_changed()
 
         card.clear()
         with card:
@@ -182,7 +183,5 @@ def _content(code: str, service: SourceService) -> None:
     sources_list()
 
 
-def build(service: SourceService) -> None:
-    tela_com_teste(
-        'Log', construir=lambda cadastro: _content(cadastro.identificacao.codigo, service)
-    )
+def build(operations: OperationService, service: SourceService, session: SessionState) -> None:
+    operation_page('Log', operations, session, lambda op: _content(op.code, service, session))

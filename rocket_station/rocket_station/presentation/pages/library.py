@@ -3,7 +3,7 @@ from pathlib import Path
 import webview
 from nicegui import app, ui
 
-from estado import estado  # estado compartilhado antigo, até as outras telas migrarem
+from rocket_station.presentation.state.session import SessionState
 from rocket_station.application.operation_service import OperationService
 from rocket_station.application.package_service import PackageService
 from rocket_station.config import OPERATIONS_DIR, PACKAGE_EXTENSION, TRASH_DIR_NAME
@@ -58,9 +58,9 @@ def _description(op: Operation) -> str:
     return f'{op.project} · {op.date} · {op.location} · por {op.created_by} · {_review_summary(op)}'
 
 
-def _row(op: Operation) -> dict:
+def _row(op: Operation, session: SessionState) -> dict:
     return {
-        'active': '●' if op.code == estado.teste_ativo else '',
+        'active': '●' if op.code == session.active_code else '',
         'code': op.code,
         'kind': KIND_LABELS[op.kind],
         'activation': 'Sim' if op.uses_activation else 'Não',
@@ -72,7 +72,7 @@ def _row(op: Operation) -> dict:
     }
 
 
-def build(operations: OperationService, packages: PackageService) -> None:
+def build(operations: OperationService, packages: PackageService, session: SessionState) -> None:
     dialog = ui.dialog()
     with dialog:
         card = ui.card().style('width: 800px; max-width: 90vw')
@@ -87,7 +87,7 @@ def build(operations: OperationService, packages: PackageService) -> None:
             ui.button('Excluir', on_click=lambda: delete(), color='negative')
 
     def refresh() -> None:
-        table.rows = [_row(op) for op in operations.list_all()]
+        table.rows = [_row(op, session) for op in operations.list_all()]
         table.selected.clear()
         table.update()
 
@@ -100,13 +100,13 @@ def build(operations: OperationService, packages: PackageService) -> None:
     def activate() -> None:
         code = selected_code()
         if code:
-            estado.ativar(code)
+            session.activate(code)
 
     def edit() -> None:
         code = selected_code()
         if code:
-            estado.ir('Cadastro')
-            estado.pedir_edicao(code)
+            session.navigate('Cadastro')
+            session.request_edit(code)
 
     def request_delete() -> None:
         code = selected_code()
@@ -117,9 +117,9 @@ def build(operations: OperationService, packages: PackageService) -> None:
             f'O teste {code} sairá da Biblioteca e será movido para a lixeira '
             f'({OPERATIONS_DIR / TRASH_DIR_NAME}). Nada é apagado de vez.'
         )
-        if code == estado.teste_ativo:
+        if code == session.active_code:
             text += ' Ele é a operação ativa e será desativado.'
-        if code == estado.em_edicao:
+        if code == session.editing_code:
             text += ' Ele está aberto no Cadastro, e o formulário será esvaziado.'
         delete_text.set_text(text)
         delete_dialog.open()
@@ -132,11 +132,11 @@ def build(operations: OperationService, packages: PackageService) -> None:
         except (OperationNotFoundError, OSError) as error:
             ui.notify(f'Não foi possível excluir: {error}', type='negative')
             return
-        if estado.teste_ativo == code:
-            estado.ativar(None)
-        if estado.em_edicao == code:
-            estado.editar(None, forcar=True)
-        estado.lista_mudou()
+        if session.active_code == code:
+            session.activate(None)
+        if session.editing_code == code:
+            session.edit(None, force=True)
+        session.list_changed()
         ui.notify(f'Teste {code} movido para a lixeira.', type='positive')
 
     async def export_() -> None:
@@ -186,12 +186,12 @@ def build(operations: OperationService, packages: PackageService) -> None:
                 except Exception as error:  # a falha de um pacote não pode barrar os outros
                     failures.append(f'{inspection.file.name}: {error}')
             dialog.close()
-            estado.lista_mudou()
+            session.list_changed()
             # se um teste ativo ou aberto no Cadastro foi substituído, recarrega o que as telas mostram
-            if estado.teste_ativo in imported:
-                estado.ativar(estado.teste_ativo, forcar=True)
-            if estado.em_edicao in imported:
-                estado.editar(estado.em_edicao, forcar=True)
+            if session.active_code in imported:
+                session.activate(session.active_code, force=True)
+            if session.editing_code in imported:
+                session.edit(session.editing_code, force=True)
             if imported:
                 ui.notify(f'Importados: {", ".join(imported)}', type='positive')
             for failure in failures:
@@ -241,5 +241,5 @@ def build(operations: OperationService, packages: PackageService) -> None:
     table.props('no-data-label="Nenhum teste salvo ainda"')
     refresh()
 
-    estado.ao_mudar_lista(refresh)
-    estado.ao_mudar_ativo(refresh)
+    session.on_list_change(refresh)
+    session.on_active_change(refresh)

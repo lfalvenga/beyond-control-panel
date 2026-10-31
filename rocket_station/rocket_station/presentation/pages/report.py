@@ -9,9 +9,9 @@ from rocket_station.domain.errors import ValidationError
 from rocket_station.domain.report import Report
 from rocket_station.presentation.components.calculation_card import calculation_card
 from rocket_station.presentation.components.chart_card import chart_card
-from telas.comum import tela_com_teste  # cabeçalho e bloqueio sem operação ativa (antigo)
+from rocket_station.application.operation_service import OperationService
+from rocket_station.presentation.components.operation_page import operation_page
 
-# rascunho do relatório (gráficos e cálculos) por operação (id), ainda não salvo no pacote
 _drafts: dict[str, Report] = {}
 
 
@@ -154,12 +154,16 @@ def _content(
 
 
 def build(
-    reports: ReportService, sources: SourceService, calculations: CalculationService
+    operations: OperationService,
+    reports: ReportService,
+    sources: SourceService,
+    calculations: CalculationService,
+    session: SessionState,
 ) -> None:
-    tela_com_teste(
+    operation_page(
         'Relatório',
-        construir=lambda cadastro: _content(
-            cadastro.identificacao.codigo, cadastro.id, reports, sources, calculations
-        ),
-        reagir_a_dados=True,
+        operations,
+        session,
+        lambda op: _content(op.code, op.id, reports, sources, calculations),
+        react_to_data=True,
     )

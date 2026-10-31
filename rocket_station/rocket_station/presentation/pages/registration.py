@@ -2,7 +2,7 @@ from dataclasses import asdict
 
 from nicegui import ui
 
-from estado import estado  # estado compartilhado antigo, até as outras telas migrarem
+from rocket_station.presentation.state.session import SessionState
 from rocket_station.application.operation_service import OperationService
 from rocket_station.domain.enums import OperationKind
 from rocket_station.domain.errors import (
@@ -33,7 +33,7 @@ def _parameter_card(p: Parameter) -> None:
             ui.select(REVIEW_LABELS, label='Parecer').bind_value(p, 'review').props('outlined')
 
 
-def build(service: OperationService) -> None:
+def build(service: OperationService, session: SessionState) -> None:
     current = {'operation': service.new(), 'editing': False}
     current['original'] = asdict(current['operation'])
     pending = {'code': None}  # para onde ir se o usuário confirmar o descarte
@@ -44,7 +44,7 @@ def build(service: OperationService) -> None:
         return asdict(current['operation']) != current['original']
 
     def reload() -> None:
-        code = estado.em_edicao
+        code = session.editing_code
         if code is None:
             current['operation'] = service.new()
             current['editing'] = False
@@ -53,7 +53,7 @@ def build(service: OperationService) -> None:
                 current['operation'] = service.get(code)
             except (OperationNotFoundError, OSError, ValueError, KeyError, TypeError):
                 ui.notify(f'Não foi possível abrir o teste {code}.', type='negative')
-                estado.editar(None, forcar=True)
+                session.edit(None, force=True)
                 return
             current['editing'] = True
         current['original'] = asdict(current['operation'])
@@ -75,21 +75,21 @@ def build(service: OperationService) -> None:
         current['original'] = asdict(operation)
         dialog_exists.close()
         ui.notify(f'Teste {operation.code} salvo.', type='positive')
-        estado.lista_mudou()
-        estado.editar(operation.code)
+        session.list_changed()
+        session.edit(operation.code)
 
     def ask(code) -> None:
         if has_changes():
             pending['code'] = code
             dialog_discard.open()
         else:
-            estado.editar(code, forcar=True)
+            session.edit(code, force=True)
 
     def discard_and_continue() -> None:
         dialog_discard.close()
-        estado.editar(pending['code'], forcar=True)
+        session.edit(pending['code'], force=True)
 
-    estado.guarda_edicao = ask
+    session.edit_guard = ask
 
     with dialog_exists, ui.card():
         ui.label('Já existe um teste com esse código.').classes('text-lg font-bold')
@@ -123,7 +123,7 @@ def build(service: OperationService) -> None:
                     'text-gray-400'
                 )
                 ui.button(
-                    'Novo teste', icon='add', on_click=lambda: estado.pedir_edicao(None)
+                    'Novo teste', icon='add', on_click=lambda: session.request_edit(None)
                 ).props('outline')
 
         with ui.card().classes('w-full'):
@@ -157,4 +157,4 @@ def build(service: OperationService) -> None:
         ui.button('Salvar', on_click=save)
 
     form()
-    estado.ao_mudar_edicao(reload)
+    session.on_editing_change(reload)
