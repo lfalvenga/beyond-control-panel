@@ -1,4 +1,4 @@
-from rocket_station.presentation.state.session import SessionState
+from src.ui.state.session import SessionState
 
 
 def test_activate_notifies_only_on_change():

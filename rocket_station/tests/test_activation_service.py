@@ -2,12 +2,12 @@ import json
 
 import pytest
 
-from rocket_station.application.activation_service import ActivationService
-from rocket_station.application.recording_service import RecordingService
-from rocket_station.application.telemetry_service import TelemetryService
-from rocket_station.domain.activation import COUNTDOWN_S
-from rocket_station.infrastructure.persistence.source_repository import FileSourceRepository
-from rocket_station.infrastructure.telemetry.recorder import FileRecordingStorage
+from src.application.activation_service import ActivationService
+from src.application.recording_service import RecordingService
+from src.application.telemetry_service import TelemetryService
+from src.domain.activation import COUNTDOWN_S
+from src.infrastructure.persistence.source_repository import FileSourceRepository
+from src.infrastructure.telemetry.recorder import FileRecordingStorage
 
 ALL_ACKS = '{"ack1":1,"ack2":1,"ack3":1}'
 

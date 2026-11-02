@@ -1,7 +1,7 @@
 import pytest
 
-from rocket_station.domain.recording import RawRecord, build_table
-from rocket_station.domain.telemetry import X_PACKET, X_TIME, LinkMonitor, LiveHistory, decode_line
+from src.domain.recording import RawRecord, build_table
+from src.domain.telemetry import X_PACKET, X_TIME, LinkMonitor, LiveHistory, decode_line
 
 
 def test_decode_separates_link_from_variables():

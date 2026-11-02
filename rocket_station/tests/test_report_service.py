@@ -2,18 +2,18 @@ import json
 
 import pytest
 
-from rocket_station.application.calculation_service import CalculationService
-from rocket_station.application.operation_service import OperationService
-from rocket_station.application.report_service import ReportService
-from rocket_station.application.source_service import SourceService
-from rocket_station.domain.calculation import Calculation, FormulaInfo, ParameterInfo
-from rocket_station.domain.enums import Axis
-from rocket_station.domain.errors import CalculationError
-from rocket_station.domain.report import Chart, Report
-from rocket_station.infrastructure.persistence.csv_reader import CsvFileReader
-from rocket_station.infrastructure.persistence.operation_repository import FileOperationRepository
-from rocket_station.infrastructure.persistence.report_repository import FileReportRepository
-from rocket_station.infrastructure.persistence.source_repository import FileSourceRepository
+from src.application.calculation_service import CalculationService
+from src.application.operation_service import OperationService
+from src.application.report_service import ReportService
+from src.application.source_service import SourceService
+from src.domain.calculation import Calculation, FormulaInfo, ParameterInfo
+from src.domain.enums import Axis
+from src.domain.errors import CalculationError
+from src.domain.report import Chart, Report
+from src.infrastructure.persistence.csv_reader import CsvFileReader
+from src.infrastructure.persistence.operation_repository import FileOperationRepository
+from src.infrastructure.persistence.report_repository import FileReportRepository
+from src.infrastructure.persistence.source_repository import FileSourceRepository
 
 SUM = FormulaInfo(
     'soma', 'Soma', '', {'valores': 'Variável'}, {'fator': ParameterInfo(1.0, 'Fator')}, 'u', False, '1'

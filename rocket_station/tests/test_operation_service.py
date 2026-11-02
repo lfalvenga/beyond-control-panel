@@ -2,10 +2,10 @@ import json
 
 import pytest
 
-from rocket_station.application.operation_service import OperationService
-from rocket_station.domain.enums import OperationKind
-from rocket_station.domain.errors import OperationExistsError, ValidationError
-from rocket_station.infrastructure.persistence.operation_repository import FileOperationRepository
+from src.application.operation_service import OperationService
+from src.domain.enums import OperationKind
+from src.domain.errors import OperationExistsError, ValidationError
+from src.infrastructure.persistence.operation_repository import FileOperationRepository
 
 
 @pytest.fixture

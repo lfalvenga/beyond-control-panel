@@ -2,12 +2,12 @@ import json
 
 import pytest
 
-from rocket_station.application.operation_service import OperationService
-from rocket_station.application.source_service import SourceService
-from rocket_station.domain.errors import InvalidCsvError, ValidationError
-from rocket_station.infrastructure.persistence.csv_reader import CsvFileReader
-from rocket_station.infrastructure.persistence.operation_repository import FileOperationRepository
-from rocket_station.infrastructure.persistence.source_repository import FileSourceRepository
+from src.application.operation_service import OperationService
+from src.application.source_service import SourceService
+from src.domain.errors import InvalidCsvError, ValidationError
+from src.infrastructure.persistence.csv_reader import CsvFileReader
+from src.infrastructure.persistence.operation_repository import FileOperationRepository
+from src.infrastructure.persistence.source_repository import FileSourceRepository
 
 CSV = 'alt;v;temp\n0;0;25,1\n1,5;0,8;25,3\n'
 

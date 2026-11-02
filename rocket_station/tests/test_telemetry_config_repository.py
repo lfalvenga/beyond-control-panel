@@ -1,15 +1,15 @@
 import json
 
-from rocket_station.domain.enums import Axis
-from rocket_station.domain.report import Series
-from rocket_station.domain.telemetry import (
+from src.domain.enums import Axis
+from src.domain.report import Series
+from src.domain.telemetry import (
     X_PACKET,
     X_TIME,
     ExpectedVariable,
     LiveChart,
     TelemetryConfig,
 )
-from rocket_station.infrastructure.persistence.telemetry_config_repository import (
+from src.infrastructure.persistence.telemetry_config_repository import (
     FileTelemetryConfigRepository,
 )
 

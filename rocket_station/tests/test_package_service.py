@@ -1,10 +1,10 @@
 import pytest
 
-from rocket_station.application.operation_service import OperationService
-from rocket_station.application.package_service import PackageService
-from rocket_station.domain.package import ImportAction, ImportSituation
-from rocket_station.infrastructure.persistence.operation_repository import FileOperationRepository
-from rocket_station.infrastructure.persistence.package_archive import ZipPackageArchive
+from src.application.operation_service import OperationService
+from src.application.package_service import PackageService
+from src.domain.package import ImportAction, ImportSituation
+from src.infrastructure.persistence.operation_repository import FileOperationRepository
+from src.infrastructure.persistence.package_archive import ZipPackageArchive
 
 
 @pytest.fixture

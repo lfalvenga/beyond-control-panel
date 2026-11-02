@@ -1,6 +1,6 @@
 import pytest
 
-from rocket_station.domain.activation import (
+from src.domain.activation import (
     ACK_TIMEOUT_S,
     COUNTDOWN_S,
     Activation,

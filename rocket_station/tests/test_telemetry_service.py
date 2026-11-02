@@ -1,12 +1,12 @@
 import pytest
 
-from rocket_station.application.recording_service import RecordingService
-from rocket_station.application.telemetry_service import TelemetryService
-from rocket_station.domain.enums import SourceKind
-from rocket_station.domain.errors import ValidationError
-from rocket_station.domain.telemetry import ExpectedVariable, TelemetryConfig
-from rocket_station.infrastructure.persistence.source_repository import FileSourceRepository
-from rocket_station.infrastructure.telemetry.recorder import FileRecordingStorage
+from src.application.recording_service import RecordingService
+from src.application.telemetry_service import TelemetryService
+from src.domain.enums import SourceKind
+from src.domain.errors import ValidationError
+from src.domain.telemetry import ExpectedVariable, TelemetryConfig
+from src.infrastructure.persistence.source_repository import FileSourceRepository
+from src.infrastructure.telemetry.recorder import FileRecordingStorage
 
 
 class FakeStation:

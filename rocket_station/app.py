@@ -1,8 +1,13 @@
-from nicegui import ui
+from nicegui import app, ui
 
-from rocket_station.bootstrap import build_services
-from rocket_station.presentation.shell import build_shell
-from rocket_station.presentation.state.session import SessionState
+from src.bootstrap import build_services
+from src.config import ASSETS_DIR
+from src.ui.shell import build_shell
+from src.ui.state.session import SessionState
+
+ASSETS_DIR.mkdir(exist_ok=True)
+if not any(getattr(route, 'path', '') == '/assets' for route in app.routes):
+    app.add_static_files('/assets', str(ASSETS_DIR))  # logo e fontes, sem internet
 
 build_shell(build_services(), SessionState())
 
