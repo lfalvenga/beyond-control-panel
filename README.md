@@ -1,6 +1,8 @@
 # Beyond Static Fire
 
-Aplicativo desktop para testes estáticos e voos: cadastro, acionamento, telemetria, log do SD e relatório.
+Aplicativo desktop para o gerenciamento de testes estáticos e voos, incluindo a centralização de dados e relatórios posteriores.
+
+
 
 ## Rodar
 
