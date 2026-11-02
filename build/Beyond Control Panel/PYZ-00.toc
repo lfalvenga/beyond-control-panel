@@ -1,1 +1,0 @@
-('C:\\beyond-control-panel\\build\\Beyond Control Panel\\PYZ-00.pyz', [])
