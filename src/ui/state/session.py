@@ -11,6 +11,14 @@ class SessionState:
         self.navigate = lambda page: None  # o shell troca por uma navegação de verdade
         # o Cadastro troca por uma guarda que avisa de alterações não salvas
         self.edit_guard = lambda code: self.edit(code, force=True)
+        self._theme_listeners: list = []
+
+    def on_theme_change(self, fn) -> None:
+        self._theme_listeners.append(fn)
+
+    def theme_changed(self) -> None:
+        for fn in list(self._theme_listeners):
+            fn()
 
     def on_active_change(self, callback) -> None:
         self._on_active.append(callback)

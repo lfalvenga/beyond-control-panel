@@ -1,6 +1,7 @@
 from datetime import datetime
 
-from nicegui import ui
+from nicegui import app, ui
+from src.ui.theme import is_dark
 
 from src.bootstrap import Services
 from src.domain.errors import OperationNotFoundError
@@ -27,6 +28,14 @@ GROUP_OF = {name: group for group, _, names in MENU for name in names}
 
 def build_shell(services: Services, session: SessionState) -> None:
     ops = services.operations
+    dark = ui.dark_mode(value=is_dark())
+
+    def toggle_theme() -> None:
+        dark.value = not dark.value
+        app.storage.general['theme'] = 'dark' if dark.value else 'light'
+        theme_button.props(f'icon={"light_mode" if dark.value else "dark_mode"}')
+        session.theme_changed()
+
     pages = {
         'Cadastro': lambda: registration.build(ops, session),
         'Biblioteca': lambda: library.build(ops, services.packages, session),
@@ -117,8 +126,20 @@ def build_shell(services: Services, session: SessionState) -> None:
 
     with ui.row().classes('w-full items-start justify-between'):
         crumb = ui.label('').classes('crumb')
+
         with ui.column().classes('items-end gap-1'):
-            chip = ui.label('Desconectado').classes('chip chip-off')
+            with ui.row().classes('items-center gap-2'):
+                theme_button = (
+                    ui.button(
+                        icon='light_mode' if is_dark() else 'dark_mode',
+                        on_click=toggle_theme,
+                    )
+                    .props('flat round dense')
+                    .tooltip('Alternar tema claro/escuro')
+                )
+
+                chip = ui.label('Desconectado').classes('chip chip-off')
+
             ui.label(datetime.now().strftime('%d/%m/%Y')).classes('stamp')
 
     with ui.tab_panels(value='Cadastro').classes('w-full bg-transparent') as panels:
