@@ -1,6 +1,6 @@
 """Tema visual: paleta, tipografia e CSS global. Mude aqui para mudar o app inteiro."""
 
-from nicegui import ui
+from nicegui import app, ui
 
 # Paleta estimada a partir dos designs da equipe (ajuste os hexadecimais aqui)
 PALETTE = {
@@ -22,10 +22,36 @@ PALETTE = {
     'warn-bg': '#FDF1D6',
     'bad': '#C0392B',
     'bad-bg': '#F8D7DC',
+    'chip-off': '#E2E8F0',
 }
+
+DARK_PALETTE = {
+    'bg': '#0B1721', 
+    'card': '#12232F', 
+    'line': '#24394A', 
+    'ink': '#F1F5F9',
+    'text': '#D9E2EA', 
+    'muted': '#8DA2B3', 
+    'nav': '#08141C', 
+    'nav-active': '#15384A',
+    'nav-text': '#E6EEF2', 
+    'nav-muted': '#7F98A8', 
+    'ok': '#4ADE80', 
+    'ok-bg': '#123524',
+    'warn': '#FBBF24', 
+    'warn-bg': '#3B2F10', 
+    'bad': '#F87171', 
+    'bad-bg': '#3F1D22',
+    'chip-off': '#1E2F3C',
+}
+
 
 # classes de texto usadas pelas telas (legíveis em fundo claro)
 GRAY, GREEN, YELLOW, RED = 'text-slate-500', 'text-emerald-700', 'text-amber-600', 'text-red-600'
+
+
+def is_dark() -> bool:
+    return app.storage.general.get('theme') == 'dark'
 
 
 def higher_is_better(value: float | None, green: float, yellow: float) -> str:
@@ -81,6 +107,13 @@ body { background: var(--bg); color: var(--text);
 .chip-ok { background: var(--ok-bg); color: var(--ok); }
 .chip-off { background: #E2E8F0; color: var(--muted); }
 .chip-bad { background: var(--bad-bg); color: var(--bad); }
+
+
+.text-slate-500 { color: var(--muted) !important; }
+.text-emerald-700 { color: var(--ok) !important; }
+.text-amber-600 { color: var(--warn) !important; }
+.text-red-600 { color: var(--bad) !important; }
+.q-card, .q-table__card { background: var(--card); color: var(--text); }
 """
 
 
@@ -94,5 +127,13 @@ def apply_theme() -> None:
         warning=PALETTE['warn'],
         info=PALETTE['primary'],
     )
-    variables = ':root{' + ''.join(f'--{key}:{value};' for key, value in PALETTE.items()) + '}'
-    ui.add_css(variables + CSS)
+    
+    def _vars(sel: str, p: dict) -> str:
+        return sel + '{' + ''.join(f'--{k}:{v};' for k, v in p.items()) + '}'
+
+    ui.add_css(
+        _vars(':root', PALETTE)
+        + _vars('body.body--dark', DARK_PALETTE)
+        + 'body.body--dark { --q-primary: #3AA0C8 !important; }'
+        + CSS
+    )

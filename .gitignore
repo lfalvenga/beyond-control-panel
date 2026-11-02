@@ -1,3 +1,8 @@
 .venv/
 __pycache__/
 .pytest_cache/
+dist/
+build/
+installer.iss
+Beyond Control Panel.spec
+.nicegui/

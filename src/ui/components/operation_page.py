@@ -43,5 +43,6 @@ def operation_page(
     content()
     session.on_active_change(content.refresh)
     session.on_list_change(content.refresh)  # o cadastro pode ter sido editado e salvo
+    session.on_theme_change(content.refresh)
     if react_to_data:
         session.on_data_change(content.refresh)
