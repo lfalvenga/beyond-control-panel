@@ -4,3 +4,4 @@ __pycache__/
 dist/
 build/
 installer.iss
+Beyond Control Panel.spec
