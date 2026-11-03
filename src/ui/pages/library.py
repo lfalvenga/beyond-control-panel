@@ -19,12 +19,9 @@ COLUMNS = [
     {'name': 'active', 'label': '', 'field': 'active', 'align': 'center'},
     {'name': 'code', 'label': 'Código', 'field': 'code', 'align': 'left'},
     {'name': 'kind', 'label': 'Tipo', 'field': 'kind', 'align': 'left'},
-    {'name': 'activation', 'label': 'Acionamento', 'field': 'activation', 'align': 'left'},
     {'name': 'project', 'label': 'Projeto', 'field': 'project', 'align': 'left'},
-    {'name': 'date', 'label': 'Data', 'field': 'date', 'align': 'left'},
-    {'name': 'location', 'label': 'Local', 'field': 'location', 'align': 'left'},
     {'name': 'created_by', 'label': 'Criado por', 'field': 'created_by', 'align': 'left'},
-    {'name': 'review', 'label': 'Ficha', 'field': 'review', 'align': 'left'},
+    {'name': 'actions', 'label': '', 'field': 'actions', 'align': 'right'},
 ]
 
 OPTIONS = {
@@ -63,12 +60,8 @@ def _row(op: Operation, session: SessionState) -> dict:
         'active': '●' if op.code == session.active_code else '',
         'code': op.code,
         'kind': KIND_LABELS[op.kind],
-        'activation': 'Sim' if op.uses_activation else 'Não',
         'project': op.project,
-        'date': op.date,
-        'location': op.location,
         'created_by': op.created_by,
-        'review': _review_summary(op),
     }
 
 
@@ -88,30 +81,14 @@ def build(operations: OperationService, packages: PackageService, session: Sessi
 
     def refresh() -> None:
         table.rows = [_row(op, session) for op in operations.list_all()]
-        table.selected.clear()
         table.update()
 
-    def selected_code() -> str | None:
-        if not table.selected:
-            ui.notify('Selecione um teste na tabela.', type='warning')
-            return None
-        return table.selected[0]['code']
-
-    def activate() -> None:
-        code = selected_code()
-        if code:
-            session.activate(code)
-
-    def edit() -> None:
-        code = selected_code()
+    def edit(code: str) -> None:
         if code:
             session.navigate('Cadastro')
             session.request_edit(code)
 
-    def request_delete() -> None:
-        code = selected_code()
-        if not code:
-            return
+    def request_delete(code: str) -> None:
         target['code'] = code
         text = (
             f'O teste {code} sairá da Biblioteca e será movido para a lixeira '
@@ -139,10 +116,7 @@ def build(operations: OperationService, packages: PackageService, session: Sessi
         session.list_changed()
         ui.notify(f'Teste {code} movido para a lixeira.', type='positive')
 
-    async def export_() -> None:
-        code = selected_code()
-        if not code:
-            return
+    async def export_(code: str) -> None:
         result = await app.native.main_window.create_file_dialog(
             webview.FileDialog.SAVE,
             save_filename=f'{code}{PACKAGE_EXTENSION}',
@@ -231,13 +205,23 @@ def build(operations: OperationService, packages: PackageService, session: Sessi
         ui.label('Testes e voos salvos').classes('text-2xl font-bold')
         with ui.row():
             ui.button('Atualizar', icon='refresh', on_click=refresh).props('flat')
-            ui.button('Ativar', icon='check_circle', on_click=activate)
-            ui.button('Editar', icon='edit', on_click=edit).props('outline')
-            ui.button('Excluir', icon='delete', on_click=request_delete).props('outline color=negative')
             ui.button('Importar', icon='download', on_click=import_).props('outline')
-            ui.button('Exportar', icon='upload', on_click=export_).props('outline')
+        
 
-    table = ui.table(columns=COLUMNS, rows=[], row_key='code', selection='single').classes('w-full')
+    table = ui.table(columns=COLUMNS, rows=[], row_key='code').classes('w-full')
+    table.add_slot('body-cell-actions', r'''
+        <q-td :props="props" auto-width>
+            <q-btn flat round dense icon="edit"
+                   @click="$parent.$emit('edit', props.row.code)"><q-tooltip>Editar</q-tooltip></q-btn>
+            <q-btn flat round dense icon="upload"
+                   @click="$parent.$emit('export', props.row.code)"><q-tooltip>Exportar</q-tooltip></q-btn>
+            <q-btn flat round dense color="negative" icon="delete"
+                   @click="$parent.$emit('remove', props.row.code)"><q-tooltip>Excluir</q-tooltip></q-btn>
+        </q-td>
+    ''')
+    table.on('edit', lambda e: edit(e.args))
+    table.on('export', lambda e: export_(e.args))
+    table.on('remove', lambda e: request_delete(e.args))
     table.props('no-data-label="Nenhum teste salvo ainda"')
     refresh()
 
