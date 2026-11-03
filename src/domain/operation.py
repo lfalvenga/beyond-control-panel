@@ -6,21 +6,45 @@ from src.domain.errors import ValidationError
 
 CODE_PATTERN = re.compile(r'[A-Za-z0-9_-]+')
 
+def _single(name: str, unit: str) -> tuple:
+    return (name, [(name, unit)])
+
 DEFAULT_PARAMETERS = [
-    ('Pressão Atmosférica', 'Pa'),
-    ('Latitude', '°'),
-    ('Longitude', '°'),
-    ('Altitude', 'm'),
-    ('Inclinação', '°'),
-    ('Azimute', '°'),
+    _single('Pressão Atmosférica', 'Pa'),
+    _single('Latitude', '°'),
+    _single('Longitude', '°'),
+    _single('Altitude', 'm'),
+    _single('Inclinação', '°'),
+    _single('Azimute', '°'),
+    ('Motor', [
+        ('Massa da Tubeira', 'g'),
+        ('Massa da Tampa', 'g'),
+        ('Massa da Câmara', 'g'),
+        ('Massa do Motor Vazio', 'g'),
+    ]),
+    *[
+        (f'{n}° Grão', [('Massa do Grão', 'g'), ('Comprimento do Grão', 'mm')])
+        for n in range(1, 8)
+    ],
+    ('Motor Carregado', [('Massa do Motor', 'g'), ('Ajuste de Massa (Inibidor)', 'g')]),
+    _single('Umidade do Ar', '%'),
+    _single('Temperatura do Ar', '°C'),
+    _single('Velocidade do Vento', 'm/s'),
+    ('Termopares', [(f'Posição Termopar {n} (Tampa)', 'mm') for n in (1, 2, 3)]),
 ]
+
+
+@dataclass
+class Measure:
+    name: str
+    unit: str = ''
+    value: float | None = None
 
 
 @dataclass
 class Parameter:
     name: str
-    unit: str = ''
-    value: float | None = None
+    measures: list[Measure] = field(default_factory=list)
     responsible: str = ''
     time: str = ''
     review: Review = Review.PENDING
@@ -43,7 +67,10 @@ class Operation:
 
     @classmethod
     def blank(cls) -> 'Operation':
-        return cls(parameters=[Parameter(name=n, unit=u) for n, u in DEFAULT_PARAMETERS])
+        return cls(parameters=[
+            Parameter(name=n, measures=[Measure(m, u) for m, u in ms])
+            for n, ms in DEFAULT_PARAMETERS
+        ])
 
     def normalize_and_validate(self) -> None:
         self.code = self.code.strip()

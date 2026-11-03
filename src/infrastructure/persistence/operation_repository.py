@@ -8,6 +8,7 @@ from src.domain.enums import OperationKind, Review
 from src.domain.errors import OperationExistsError, OperationNotFoundError
 from src.domain.operation import Operation, Parameter
 from src.infrastructure.persistence.file_storage import read_json, write_json_atomic
+from src.domain.operation import Measure, Operation, Parameter
 
 FILE_NAME = 'cadastro.json'  # nome histórico, mantido por compatibilidade
 
@@ -41,8 +42,9 @@ def _to_json(op: Operation) -> dict:
         'ficha': [
             {
                 'nome': p.name,
-                'unidade': p.unit,
-                'valor': p.value,
+                'medidas': [
+                    {'nome': m.name, 'unidade': m.unit, 'valor': m.value} for m in p.measures
+                ],
                 'responsavel': p.responsible,
                 'horario': p.time,
                 'parecer': _REVIEW_TO_JSON[p.review],
@@ -51,6 +53,10 @@ def _to_json(op: Operation) -> dict:
         ],
     }
 
+def _measures_from_json(p: dict) -> list[Measure]:
+    if 'medidas' in p:
+        return [Measure(m['nome'], m.get('unidade', ''), m.get('valor')) for m in p['medidas']]
+    return [Measure(p['nome'], p.get('unidade', ''), p.get('valor'))] 
 
 def operation_from_json(data: dict) -> Operation:
     ident = data['identificacao']
@@ -69,8 +75,7 @@ def operation_from_json(data: dict) -> Operation:
         parameters=[
             Parameter(
                 name=p['nome'],
-                unit=p.get('unidade', ''),
-                value=p.get('valor'),
+                measures=_measures_from_json(p),
                 responsible=p.get('responsavel', ''),
                 time=p.get('horario', ''),
                 review=_REVIEW_FROM_JSON[p.get('parecer', 'Pendente')],
