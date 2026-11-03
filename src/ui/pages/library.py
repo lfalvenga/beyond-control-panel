@@ -55,8 +55,10 @@ def _description(op: Operation) -> str:
     return f'{op.project} · {op.date} · {op.location} · por {op.created_by} · {_review_summary(op)}'
 
 
-def _row(op: Operation, session: SessionState) -> dict:
+def _row(op: Operation, session: SessionState, example: bool = False) -> dict:
     return {
+        'key': f'ex:{op.code}' if example else op.code,
+        'example': example,
         'active': '●' if op.code == session.active_code else '',
         'code': op.code,
         'kind': KIND_LABELS[op.kind],
@@ -65,7 +67,7 @@ def _row(op: Operation, session: SessionState) -> dict:
     }
 
 
-def build(operations: OperationService, packages: PackageService, session: SessionState) -> None:
+def build(operations: OperationService, packages: PackageService, session: SessionState, examples: OperationService) -> None:
     dialog = ui.dialog()
     with dialog:
         card = ui.card().style('width: 800px; max-width: 90vw')
@@ -80,7 +82,7 @@ def build(operations: OperationService, packages: PackageService, session: Sessi
             ui.button('Excluir', on_click=lambda: delete(), color='negative')
 
     def refresh() -> None:
-        table.rows = [_row(op, session) for op in operations.list_all()]
+        table.rows = [_row(op, session) for op in operations.list_all()] + [_row(op, session, example=True) for op in examples.list_all()]
         table.update()
 
     def edit(code: str) -> None:
@@ -208,15 +210,25 @@ def build(operations: OperationService, packages: PackageService, session: Sessi
             ui.button('Importar', icon='download', on_click=import_).props('outline')
         
 
-    table = ui.table(columns=COLUMNS, rows=[], row_key='code').classes('w-full')
+    table = ui.table(columns=COLUMNS, rows=[], row_key='key').classes('w-full')
     table.add_slot('body-cell-actions', r'''
         <q-td :props="props" auto-width>
-            <q-btn flat round dense icon="edit"
-                   @click="$parent.$emit('edit', props.row.code)"><q-tooltip>Editar</q-tooltip></q-btn>
-            <q-btn flat round dense icon="upload"
-                   @click="$parent.$emit('export', props.row.code)"><q-tooltip>Exportar</q-tooltip></q-btn>
-            <q-btn flat round dense color="negative" icon="delete"
-                   @click="$parent.$emit('remove', props.row.code)"><q-tooltip>Excluir</q-tooltip></q-btn>
+            <template v-if="!props.row.example">
+                <q-btn flat round dense icon="edit"
+                    @click="$parent.$emit('edit', props.row.code)">
+                    <q-tooltip>Editar</q-tooltip>
+                </q-btn>
+
+                <q-btn flat round dense icon="upload"
+                    @click="$parent.$emit('export', props.row.code)">
+                    <q-tooltip>Exportar</q-tooltip>
+                </q-btn>
+
+                <q-btn flat round dense color="negative" icon="delete"
+                    @click="$parent.$emit('remove', props.row.code)">
+                    <q-tooltip>Excluir</q-tooltip>
+                </q-btn>
+            </template>
         </q-td>
     ''')
     table.on('edit', lambda e: edit(e.args))

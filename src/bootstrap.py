@@ -8,7 +8,7 @@ from src.application.report_service import ReportService
 from src.application.source_service import SourceService
 from src.application.telemetry_config_service import TelemetryConfigService
 from src.application.telemetry_service import TelemetryService
-from src.config import OPERATIONS_DIR
+from src.config import OPERATIONS_DIR, EXAMPLES_DIR
 from src.infrastructure.formulas_catalog import FormulasCatalog
 from src.infrastructure.persistence.csv_reader import CsvFileReader
 from src.infrastructure.persistence.operation_repository import FileOperationRepository
@@ -27,6 +27,7 @@ from src.infrastructure.persistence.command_log import FileCommandLog
 @dataclass
 class Services:
     operations: OperationService
+    examples: OperationService
     packages: PackageService
     sources: SourceService
     report: ReportService
@@ -39,6 +40,7 @@ class Services:
 
 def build_services() -> Services:
     OPERATIONS_DIR.mkdir(parents=True, exist_ok=True)
+    EXAMPLES_DIR.mkdir(parents=True, exist_ok=True)
     repository = FileOperationRepository(OPERATIONS_DIR)
     source_repository = FileSourceRepository(OPERATIONS_DIR)
     sources = SourceService(source_repository, CsvFileReader())
@@ -46,6 +48,7 @@ def build_services() -> Services:
     recording = RecordingService(FileRecordingStorage(OPERATIONS_DIR), source_repository)
     telemetry.subscribe(recording.on_packet)  # a gravação escuta os pacotes que chegam
     return Services(
+        examples=OperationService(FileOperationRepository(EXAMPLES_DIR)),
         operations=OperationService(repository),
         packages=PackageService(repository, ZipPackageArchive(OPERATIONS_DIR)),
         sources=sources,
