@@ -22,15 +22,20 @@ def _parameter_card(p: Parameter) -> None:
                 ui.label().bind_text_from(
                     p, 'review', backward=lambda review: REVIEW_LABELS[review]
                 ).classes('text-gray-400')
-        with ui.grid(columns=3).classes('w-full p-4'):
-            ui.input('Parâmetro', value=p.name).props('outlined readonly')
-            ui.input('Unidade').bind_value(p, 'unit').props('outlined')
-            ui.number('Valor').bind_value(p, 'value').props('outlined step=any')
-            ui.input('Responsável').bind_value(p, 'responsible').props('outlined')
-            ui.input('Horário', placeholder='HH:MM').bind_value(p, 'time').props(
-                'outlined mask="##:##"'
-            )
-            ui.select(REVIEW_LABELS, label='Parecer').bind_value(p, 'review').props('outlined')
+        with ui.column().classes('w-full p-4 gap-4'):
+            for m in p.measures:
+                with ui.grid(columns=3).classes('w-full'):
+                    ui.input('Parâmetro', value=m.name).props('outlined readonly')
+                    ui.input('Unidade').bind_value(m, 'unit').props('outlined')
+                    ui.number('Valor').bind_value(m, 'value').props('outlined step=any')
+            with ui.grid(columns=3).classes('w-full'):
+                ui.input('Responsável').bind_value(p, 'responsible').props('outlined')
+                ui.input('Horário', placeholder='HH:MM').bind_value(p, 'time').props(
+                    'outlined mask="##:##"'
+                )
+                ui.select(REVIEW_LABELS, label='Parecer').bind_value(p, 'review').props(
+                    'outlined'
+                )
 
 
 def build(service: OperationService, session: SessionState) -> None:
