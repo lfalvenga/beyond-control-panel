@@ -6,4 +6,4 @@ build/
 installer.iss
 Beyond Control Panel.spec
 .nicegui/
-/data/operations
+data/operations/
