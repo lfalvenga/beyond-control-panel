@@ -38,7 +38,7 @@ def build_shell(services: Services, session: SessionState) -> None:
 
     pages = {
         'Cadastro': lambda: registration.build(ops, session),
-        'Biblioteca': lambda: library.build(ops, services.packages, session),
+        'Biblioteca': lambda: library.build(ops, services.packages, session, services.examples),
         'Telemetria': lambda: telemetry.build(
             ops, services.telemetry, services.recording, services.telemetry_config, session
         ),
