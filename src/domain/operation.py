@@ -61,6 +61,9 @@ class Operation:
     location: str = ''
     team: str = ''
     created_by: str = ''
+    created_at: str = ''
+    updated_at: str = ''
+    deleted_at: str = ''
     classification: str = ''
     notes: str = ''
     parameters: list[Parameter] = field(default_factory=list)

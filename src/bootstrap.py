@@ -43,19 +43,19 @@ def build_services() -> Services:
     EXAMPLES_DIR.mkdir(parents=True, exist_ok=True)
     repository = FileOperationRepository(OPERATIONS_DIR)
     source_repository = FileSourceRepository(OPERATIONS_DIR)
-    sources = SourceService(source_repository, CsvFileReader())
+    sources = SourceService(source_repository, CsvFileReader(), repository)
     telemetry = TelemetryService(SerialStation())
-    recording = RecordingService(FileRecordingStorage(OPERATIONS_DIR), source_repository)
+    recording = RecordingService(FileRecordingStorage(OPERATIONS_DIR), source_repository, repository)
     telemetry.subscribe(recording.on_packet)  # a gravação escuta os pacotes que chegam
     return Services(
         examples=OperationService(FileOperationRepository(EXAMPLES_DIR)),
         operations=OperationService(repository),
         packages=PackageService(repository, ZipPackageArchive(OPERATIONS_DIR)),
         sources=sources,
-        report=ReportService(FileReportRepository(OPERATIONS_DIR), sources),
+        report=ReportService(FileReportRepository(OPERATIONS_DIR), sources, repository),
         calculations=CalculationService(FormulasCatalog(), sources),
         telemetry=telemetry,
         recording=recording,
-        telemetry_config=TelemetryConfigService(FileTelemetryConfigRepository(OPERATIONS_DIR)),
+        telemetry_config=TelemetryConfigService(FileTelemetryConfigRepository(OPERATIONS_DIR), repository),
         activation=ActivationService(telemetry, recording, FileCommandLog(OPERATIONS_DIR)),
     )
