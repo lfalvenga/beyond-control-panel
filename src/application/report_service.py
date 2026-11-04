@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from src.application.ports import ReportRepository
+from src.application.ports import ReportRepository, OperationRepository
 from src.application.source_service import SourceService
 from src.domain.enums import Axis
 from src.domain.errors import ValidationError
@@ -24,7 +24,8 @@ class ChartData:
 
 
 class ReportService:
-    def __init__(self, repository: ReportRepository, sources: SourceService) -> None:
+    def __init__(self, repository: ReportRepository, sources: SourceService, operations: OperationRepository) -> None:
+        self._operations = operations
         self._repository = repository
         self._sources = sources
 
@@ -32,6 +33,7 @@ class ReportService:
         return self._repository.get(code)
 
     def save(self, code: str, report: Report) -> None:
+        self._operations.touch(code)
         self._repository.save(code, report)
 
     def new_chart(self, code: str) -> Chart:

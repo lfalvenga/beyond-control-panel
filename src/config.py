@@ -6,7 +6,7 @@ OPERATIONS_DIR = DATA_DIR / 'operations'
 EXAMPLES_DIR = DATA_DIR / 'examples'
 FORMAT_VERSION = 4  # versão do formato dos arquivos em disco
 PACKAGE_EXTENSION = '.beyondtest'
-TRASH_DIR_NAME = '.lixeira'  # nome histórico, mantido por compatibilidade
+TRASH_DIR_NAME = '.recycle_bin'  # nome histórico, mantido por compatibilidade
 
 # Limites das faixas de cor da Conexão (ajuste aqui)
 RSSI_GREEN_DBM, RSSI_YELLOW_DBM = -90.0, -105.0  # maior é melhor

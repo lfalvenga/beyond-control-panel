@@ -14,7 +14,8 @@ from src.domain.errors import ValidationError
 
 
 class SourceService:
-    def __init__(self, repository: SourceRepository, csv_reader: CsvReader) -> None:
+    def __init__(self, repository: SourceRepository, csv_reader: CsvReader, operations: OperationRepository) -> None:
+        self._operations = operations
         self._repository = repository
         self._csv = csv_reader
 

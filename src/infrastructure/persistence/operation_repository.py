@@ -10,6 +10,8 @@ from src.domain.operation import Operation, Parameter
 from src.infrastructure.persistence.file_storage import read_json, write_json_atomic
 from src.domain.operation import Measure, Operation, Parameter
 
+from src.domain.clock import now_iso
+
 FILE_NAME = 'cadastro.json'  # nome histórico, mantido por compatibilidade
 
 _KIND_TO_JSON = {OperationKind.STATIC_TEST: 'teste_estatico', OperationKind.FLIGHT: 'voo'}
@@ -38,6 +40,9 @@ def _to_json(op: Operation) -> dict:
             'criado_por': op.created_by,
             'classificacao': op.classification,
             'observacoes': op.notes,
+            'criado_em': op.created_at,
+            'atualizado_em':op.updated_at,
+            'deletado_em':op.deleted_at,
         },
         'ficha': [
             {
@@ -70,6 +75,9 @@ def operation_from_json(data: dict) -> Operation:
         location=ident.get('local', ''),
         team=ident.get('equipe', ''),
         created_by=ident.get('criado_por', ''),
+        created_at=ident.get('criado_em', ''),
+        updated_at=ident.get('atualizado_em', ''),
+        deleted_at=ident.get('deletado_em', ''),
         classification=ident.get('classificacao', ''),
         notes=ident.get('observacoes', ''),
         parameters=[
@@ -141,3 +149,11 @@ class FileOperationRepository:
         while (self._root / f'{code}-{n}').exists():
             n += 1
         return f'{code}-{n}'
+
+    def touch(self, code: str) -> None:
+        file = self._root / code / FILE_NAME
+        if not file.is_file():
+            return
+        data = read_json(file)
+        data['identificacao']['atualizado_em'] = now_iso()
+        write_json_atomic(file, data)
