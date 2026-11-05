@@ -114,9 +114,11 @@ def _content(
     def calculations_list() -> None:
         if not report.calculations:
             ui.label('Nenhum cálculo ainda. Clique em "Adicionar cálculo".').classes('text-gray-400')
+        peers: list = []  # os cartões já desenhados, em ordem; cada um enxerga os de cima
         for calculation in report.calculations:
             calculation_card(
-                code, calculation, sources, calculations, update_state, remove_calculation
+                code, calculation, sources, calculations, update_state, remove_calculation,
+                peers=peers,
             )
 
     discard_dialog = ui.dialog()

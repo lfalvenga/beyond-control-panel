@@ -2,6 +2,7 @@ from src.application.ports import FormulaCatalog
 from src.application.source_service import SourceService
 from src.domain.calculation import Calculation, Evaluation, FormulaInfo
 from src.domain.errors import CalculationError, ValidationError
+from collections.abc import Sequence
 
 
 class CalculationService:
@@ -24,7 +25,7 @@ class CalculationService:
             raise ValidationError('Importe um CSV na tela Log para montar cálculos.')
         return Calculation.new(next(iter(formulas.values())), sources[-1].id)
 
-    def evaluate(self, code: str, calculation: Calculation) -> Evaluation:
+    def evaluate(self, code: str, calculation: Calculation, previous: Sequence[Calculation] = ())-> Evaluation:
         """Recalcula e atualiza o registro do cálculo (que só vai ao pacote ao salvar)."""
         formula = self._catalog.list().get(calculation.formula_id)
         if formula is None:
@@ -45,10 +46,25 @@ class CalculationService:
             if not column or column not in numeric:
                 return Evaluation(error=f'Escolha a variável de "{description}".')
             inputs[argument] = numeric[column]
-        parameters = {
-            name: info.default if calculation.parameters.get(name) is None else calculation.parameters[name]
-            for name, info in formula.parameters.items()
-        }
+        parameters = {}
+        for name, info in formula.parameters.items():
+            origin_id = calculation.links.get(name)
+            if origin_id:
+                origin = next((p for p in previous if p.id == origin_id), None)
+                if origin is None:
+                    return Evaluation(
+                        error=f'O cálculo vinculado a "{info.description}" não existe mais '
+                        'ou ficou abaixo deste.'
+                    )
+                if origin.result is None:
+                    return Evaluation(
+                        error=f'O cálculo "{origin.name}" (vinculado a "{info.description}") '
+                        'ainda não tem resultado.'
+                    )
+                parameters[name] = origin.result
+            else:
+                value = calculation.parameters.get(name)
+                parameters[name] = info.default if value is None else value
         try:
             value = self._catalog.run(formula.id, inputs, parameters, source.sample_rate_hz)
         except CalculationError as error:

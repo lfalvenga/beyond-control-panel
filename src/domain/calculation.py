@@ -28,6 +28,7 @@ class Calculation:
     source_id: str
     inputs: dict[str, str] = field(default_factory=dict)  # argumento -> coluna original
     parameters: dict[str, float] = field(default_factory=dict)  # só os que o usuário mudou
+    links: dict[str, str] = field(default_factory=dict)  # parâmetro -> id do cálculo de origem
     notes: str = ''
     # Registro do último cálculo: o pacote continua mostrando o resultado
     # mesmo em um computador sem a fórmula instalada.
