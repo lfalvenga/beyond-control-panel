@@ -158,9 +158,10 @@ def calculation_card(
                                 value=info.default if value is None else value,
                                 on_change=change_parameter(name),
                             ).props('outlined dense debounce=300').classes('w-52')
-                        ui.select(
-                            origin_options, value=linked, on_change=change_link(name)
-                        ).props('outlined dense label="Origem"').classes('w-40')
+                        if above or linked:
+                            ui.select(
+                                origin_options, value=linked, on_change=change_link(name)
+                            ).props('outlined dense label="Origem"').classes('w-40')
         if formula.uses_time and source is not None and not source.sample_rate_hz:
             ui.label(
                 'Esta fórmula usa o tempo: informe a taxa de amostragem desta fonte, no Log.'
