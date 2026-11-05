@@ -6,6 +6,9 @@ from src.domain.calculation import Calculation
 from src.ui.components.util import setter
 
 
+
+
+
 def calculation_card(
     code: str,
     calc: Calculation,
@@ -13,11 +16,25 @@ def calculation_card(
     calculations: CalculationService,
     on_change,
     remove,
+    peers: list | None = None,
 ) -> None:
+    peers = [] if peers is None else peers
+    index = len(peers) #posiçao na lista
+
+    def previous() -> list[Calculation]:
+        return [c for c, _ in peers[:index]]
+
     all_sources = sources.list_all(code)
     by_id = {s.id: s for s in all_sources}
     formulas = calculations.formulas()
-    last = {'evaluation': calculations.evaluate(code, calc)}
+    last = {'evaluation': calculations.evaluate(code, calc, previous())}
+
+
+    def recompute() -> None:  # chamado quando um cálculo acima muda
+        last['evaluation'] = calculations.evaluate(code, calc, previous())
+        if calc.links:
+            controls.refresh()
+        result.refresh()
 
     def variables_of(source_id: str) -> dict[str, str]:
         source = by_id.get(source_id)
@@ -29,9 +46,11 @@ def calculation_card(
             return {}
 
     def update_result() -> None:
-        last['evaluation'] = calculations.evaluate(code, calc)
+        last['evaluation'] = calculations.evaluate(code, calc, previous())
         result.refresh()
         on_change()
+        for _, refresh_below in peers[index + 1:]:
+            refresh_below()
 
     def change_formula(event) -> None:
         old, new = formulas.get(calc.formula_id), formulas.get(event.value)
@@ -40,6 +59,7 @@ def calculation_card(
         calc.formula_id = event.value
         calc.inputs = {}
         calc.parameters = {}
+        calc.links = {}
         controls.refresh()
         update_result()
 
@@ -63,6 +83,17 @@ def calculation_card(
                 calc.parameters.pop(name, None)  # campo vazio: volta ao padrão
             else:
                 calc.parameters[name] = event.value
+            update_result()
+
+        return handler
+
+    def change_link(name: str):
+        def handler(event) -> None:
+            if event.value:
+                calc.links[name] = event.value
+            else:
+                calc.links.pop(name, None)
+            controls.refresh()
             update_result()
 
         return handler
@@ -102,14 +133,34 @@ def calculation_card(
                     input_options, label=description, value=current, on_change=change_input(argument)
                 ).props('outlined dense').classes('w-64')
         if formula.parameters:
+            above = {p.id: f'= {p.name}' for p in previous()}
             with ui.row().classes('w-full items-end'):
                 for name, info in formula.parameters.items():
-                    value = calc.parameters.get(name)
-                    ui.number(
-                        info.description,
-                        value=info.default if value is None else value,
-                        on_change=change_parameter(name),
-                    ).props('outlined dense debounce=300').classes('w-64')
+                    linked = calc.links.get(name, '')
+                    origin_options = {'': 'Valor digitado', **above}
+                    if linked and linked not in above:
+                        origin_options[linked] = '(cálculo ausente)'
+                    with ui.row().classes('items-end gap-1'):
+                        if linked:
+                            origin = next((p for p in previous() if p.id == linked), None)
+                            text = (
+                                f'{origin.result:.6g} {origin.unit}'.strip()
+                                if origin is not None and origin.result is not None
+                                else 'sem resultado'
+                            )
+                            ui.input(info.description, value=text).props(
+                                'outlined dense readonly'
+                            ).classes('w-52')
+                        else:
+                            value = calc.parameters.get(name)
+                            ui.number(
+                                info.description,
+                                value=info.default if value is None else value,
+                                on_change=change_parameter(name),
+                            ).props('outlined dense debounce=300').classes('w-52')
+                        ui.select(
+                            origin_options, value=linked, on_change=change_link(name)
+                        ).props('outlined dense label="Origem"').classes('w-40')
         if formula.uses_time and source is not None and not source.sample_rate_hz:
             ui.label(
                 'Esta fórmula usa o tempo: informe a taxa de amostragem desta fonte, no Log.'
@@ -146,3 +197,4 @@ def calculation_card(
         ui.textarea(
             'Observações', value=calc.notes, on_change=setter(calc, 'notes', on_change)
         ).props('outlined autogrow debounce=500').classes('w-full')
+        peers.append((calc, recompute))
