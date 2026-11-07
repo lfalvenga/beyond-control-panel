@@ -6,7 +6,7 @@ from nicegui import app, ui
 from src.ui.state.session import SessionState
 from src.application.operation_service import OperationService
 from src.application.package_service import PackageService
-from src.config import OPERATIONS_DIR, PACKAGE_EXTENSION, TRASH_DIR_NAME
+from src.config import OPERATIONS_DIR, PACKAGE_EXTENSION
 from src.domain.enums import Review
 from src.domain.errors import OperationNotFoundError
 from src.domain.operation import Operation
@@ -94,7 +94,7 @@ def build(operations: OperationService, packages: PackageService, session: Sessi
         target['code'] = code
         text = (
             f'O teste {code} sairá da Biblioteca e será movido para a lixeira '
-            f'({OPERATIONS_DIR / TRASH_DIR_NAME}). Nada é apagado de vez.'
+            f'({RECYCLE_BIN_DIR}). Nada é apagado de vez.'
         )
         if code == session.active_code:
             text += ' Ele é a operação ativa e será desativado.'

@@ -15,11 +15,12 @@ CSV = 'alt;v;temp\n0;0;25,1\n1,5;0,8;25,3\n'
 @pytest.fixture
 def env(tmp_path):
     root = tmp_path / 'ops'
-    operations = OperationService(FileOperationRepository(root))
+    repository = FileOperationRepository(root)
+    operations = OperationService(repository)
     op = operations.new()
     op.code, op.created_by = 'A1', 'Ana'
     operations.create(op)
-    return SourceService(FileSourceRepository(root), CsvFileReader()), root, tmp_path
+    return SourceService(FileSourceRepository(root), CsvFileReader(), repository), root, tmp_path
 
 
 def write_csv(tmp_path, text=CSV, name='LOG.CSV', encoding='utf-8'):

@@ -3,7 +3,7 @@ from pathlib import Path
 import uuid
 from datetime import datetime
 
-from src.config import FORMAT_VERSION, TRASH_DIR_NAME
+from src.config import FORMAT_VERSION
 from src.domain.enums import OperationKind, Review
 from src.domain.errors import OperationExistsError, OperationNotFoundError
 from src.domain.operation import Operation, Parameter
@@ -94,8 +94,9 @@ def operation_from_json(data: dict) -> Operation:
 
 
 class FileOperationRepository:
-    def __init__(self, root: Path) -> None:
+    def __init__(self, root: Path, recycle_bin: Path | None = None) -> None:
         self._root = root
+        self._recycle_bin = recycle_bin
 
     def _file(self, code: str) -> Path:
         return self._root / code / FILE_NAME
@@ -139,8 +140,10 @@ class FileOperationRepository:
         """Move para a lixeira. Nada é apagado de vez."""
         if not self.exists(code):
             raise OperationNotFoundError(f'O teste {code} não existe mais.')
-        trash = self._root / TRASH_DIR_NAME
-        trash.mkdir(exist_ok=True)
+        if self._recycle_bin is None:
+            raise OSError('Este repositório não tem lixeira.')
+        trash = self._recycle_bin
+        trash.mkdir(parents=True, exist_ok=True)
         stamp = datetime.now().strftime('%Y%m%d-%H%M%S')
         shutil.move(str(self._root / code), str(trash / f'{code}-{stamp}-{uuid.uuid4().hex[:4]}'))
 
