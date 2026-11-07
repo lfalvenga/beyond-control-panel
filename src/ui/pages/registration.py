@@ -1,5 +1,7 @@
 from dataclasses import asdict
 
+import re
+
 from nicegui import ui
 
 from src.ui.state.session import SessionState
@@ -36,6 +38,19 @@ def _parameter_card(p: Parameter) -> None:
                 ui.select(REVIEW_LABELS, label='Parecer').bind_value(p, 'review').props(
                     'outlined'
                 )
+
+
+def _format_date(value: str, previous: str) -> str:
+    digits = re.sub(r'\D', '', value or '')[:8]  # só números, no máximo 8
+    out = digits[:2]
+    if len(digits) > 2:
+        out += '/' + digits[2:4]
+    if len(digits) > 4:
+        out += '/' + digits[4:8]
+    growing = len(digits) > len(re.sub(r'\D', '', previous or ''))
+    if growing and len(digits) in (2, 4):
+        out += '/'  # a barra só aparece ao digitar, para o backspace conseguir apagá-la
+    return out
 
 
 def build(service: OperationService, session: SessionState) -> None:
@@ -121,6 +136,7 @@ def build(service: OperationService, session: SessionState) -> None:
             if event.value == OperationKind.STATIC_TEST:
                 op.uses_activation = True
 
+
         with ui.row().classes('w-full items-center justify-between'):
             ui.label('Cadastro').classes('text-4xl font-bold')
             with ui.row().classes('items-center'):
@@ -144,7 +160,9 @@ def build(service: OperationService, session: SessionState) -> None:
                     code_field.props('readonly')
                     kind_field.props('readonly')
                 ui.input('Projeto').bind_value(op, 'project').props('outlined')
-                ui.input('Data', placeholder='DD/MM/AAAA').bind_value(op, 'date').props('outlined')
+                ui.input('Data').bind_value(op, 'date').props(
+                    'outlined mask="##/##/####" fill-mask'
+                )
                 ui.input('Local').bind_value(op, 'location').props('outlined')
                 ui.input('Equipe').bind_value(op, 'team').props('outlined')
                 ui.input('Classificação').bind_value(op, 'classification').props('outlined')

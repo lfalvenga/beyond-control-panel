@@ -39,15 +39,16 @@ class FakeCatalog:
 @pytest.fixture
 def env(tmp_path):
     root = tmp_path / 'ops'
-    operations = OperationService(FileOperationRepository(root))
+    repository = FileOperationRepository(root)
+    operations = OperationService(repository)
     op = operations.new()
     op.code, op.created_by = 'A1', 'Ana'
     operations.create(op)
-    sources = SourceService(FileSourceRepository(root), CsvFileReader())
+    sources = SourceService(FileSourceRepository(root), CsvFileReader(), repository)
     csv_file = tmp_path / 'log.csv'
     csv_file.write_text('alt;v\n1;2\n3;4\n', encoding='utf-8')
     source = sources.import_csv('A1', csv_file, {}, 10)
-    reports = ReportService(FileReportRepository(root), sources)
+    reports = ReportService(FileReportRepository(root), sources, repository)
     calculations = CalculationService(FakeCatalog({'soma': SUM}), sources)
     return reports, calculations, source, root
 

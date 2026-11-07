@@ -10,7 +10,7 @@ from src.infrastructure.persistence.package_archive import ZipPackageArchive
 @pytest.fixture
 def env(tmp_path):
     root = tmp_path / 'ops'
-    repository = FileOperationRepository(root)
+    repository = FileOperationRepository(root, tmp_path / 'recycle_bin')
     return OperationService(repository), PackageService(repository, ZipPackageArchive(root)), tmp_path
 
 
